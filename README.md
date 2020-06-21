@@ -61,9 +61,7 @@ public class SecurityConfiguration extends
    // ...
 }
 
-git status
-git add
-git commit
+
 ```
 The annotation @EnableWebSecurity enables Web security; otherwise, it remains disabled by default. Now, to configure the security, we can either implements the interface called WebSecurityConfigurer or extend the more convenient class called WebSecurityConfigurerAdapter. The advantage of extending the adapter class is that we can configure Web security by overriding only those parts that we are interested in; others can remain their default form. There are three variations of the configure method that we can override to configure and secure the application:
 
@@ -73,6 +71,7 @@ void configure( WebSecurity web): To configure Spring Security's filter chain
 The default filter chain is fine for most needs. So, we may configure the other two in the following manner.
 
 
+```
 
 public class SecurityConfiguration extends
       WebSecurityConfigurerAdapter {
@@ -103,11 +102,13 @@ public class SecurityConfiguration extends
 
    // ...
 }
+```
 
 
 The PasswordEncoder is a service interface provided by the Spring Security framework for encoding passwords.
 
 The interceptor's secure method configuration may look like this:
+```
 
 public class SecurityConfiguration extends
       WebSecurityConfigurerAdapter {
@@ -122,11 +123,14 @@ public class SecurityConfiguration extends
 
    // ...
 }
+```
+
 This simple configuration specifies how HTTP requests are secured. The chain of method enforces that all HTTP requests are authenticated via a login form. The form-based login is a predefined login page provided by Spring Security.
 
 When overriding the configure(AuthenticationManagerBuilder auth) method, we can use in-memory user storage as follows:
 
 
+```
 
 public class SecurityConfiguration extends
       WebSecurityConfigurerAdapter {
@@ -142,6 +146,7 @@ public class SecurityConfiguration extends
    
    
 }
+```
 
 
 Conclusion
