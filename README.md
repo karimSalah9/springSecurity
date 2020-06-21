@@ -59,12 +59,16 @@ public class SecurityConfiguration extends
       WebSecurityConfigurerAdapter {
    // ...
 }
+
+
 The annotation @EnableWebSecurity enables Web security; otherwise, it remains disabled by default. Now, to configure the security, we can either implements the interface called WebSecurityConfigurer or extend the more convenient class called WebSecurityConfigurerAdapter. The advantage of extending the adapter class is that we can configure Web security by overriding only those parts that we are interested in; others can remain their default form. There are three variations of the configure method that we can override to configure and secure the application:
 
 void configure( AuthenticationManagerBuilder auth): To configure user details services
 void configure( HttpSecurity http): To configure how requests are secured by interceptors
 void configure( WebSecurity web): To configure Spring Security's filter chain
 The default filter chain is fine for most needs. So, we may configure the other two in the following manner.
+
+
 
 public class SecurityConfiguration extends
       WebSecurityConfigurerAdapter {
@@ -95,6 +99,8 @@ public class SecurityConfiguration extends
 
    // ...
 }
+
+
 The PasswordEncoder is a service interface provided by the Spring Security framework for encoding passwords.
 
 The interceptor's secure method configuration may look like this:
@@ -116,6 +122,8 @@ This simple configuration specifies how HTTP requests are secured. The chain of 
 
 When overriding the configure(AuthenticationManagerBuilder auth) method, we can use in-memory user storage as follows:
 
+
+
 public class SecurityConfiguration extends
       WebSecurityConfigurerAdapter {
    @Override
@@ -127,7 +135,11 @@ public class SecurityConfiguration extends
             "ADMIN");
    }
    // ...
+   
+   
 }
+
+
 Conclusion
 This is a glimpse of Spring Security and how it is configured in a Web application. Of course, there is more to it as we delve deeper. We'll take that up in a separate article. The key theme of Spring Security is that it handles authentication and authorization at the Web request level and at the method invocation level. This is just another level of security we can apply to a Web application by using the Spring framework. However, one must remember that security in essence is never comprehensive; only provision security can be optimal.
 
