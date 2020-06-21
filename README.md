@@ -45,6 +45,7 @@ Security in a Spring MVC Application
 Because Spring Security tightly integrates with the Spring Framework and other commonly used authentication mechanisms, such as HTTP basic authentication, X.509 certificate, form-based login, and so on, it has comprehensive support for both Web applications as well as method-level security. Securing Web applications is perhaps the most common concern and here we'll glimpse that aspect of Spring Security.
 
 While employing Spring Security, one can completely eliminate the need of an XML security configuration and instead apply an annotation to configure it. We can write a simple configuration class such as follows:
+```
 
 package org.mano.security.config;
 
@@ -60,7 +61,10 @@ public class SecurityConfiguration extends
    // ...
 }
 
-
+git status
+git add
+git commit
+```
 The annotation @EnableWebSecurity enables Web security; otherwise, it remains disabled by default. Now, to configure the security, we can either implements the interface called WebSecurityConfigurer or extend the more convenient class called WebSecurityConfigurerAdapter. The advantage of extending the adapter class is that we can configure Web security by overriding only those parts that we are interested in; others can remain their default form. There are three variations of the configure method that we can override to configure and secure the application:
 
 void configure( AuthenticationManagerBuilder auth): To configure user details services
